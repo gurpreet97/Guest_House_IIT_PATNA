@@ -248,7 +248,7 @@ use PHPMailer\PHPMailer\Exception;
             <th scope="col">Rooms Requested</th>
             <th scope="col">Arrival</th>
             <th scope="col">Departure</th>
-            <th scope="col">Change Status</th>
+            <th scope="col" style="width:20%;">Change Status</th>
             <!-- <th scope="col">Delete Request</th> -->
           </tr>
         </thead>
