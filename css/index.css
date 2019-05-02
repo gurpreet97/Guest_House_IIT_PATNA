@@ -1,0 +1,22 @@
+nav {
+  width: 80%;
+  margin: 40px auto 0px;
+  color: #fff;
+  background: #5F9EA0;
+  text-align: center;
+  border: 1px solid #80C4DE;
+  border-radius: 10px 10px 10px 10px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5);
+}
+
+.header-nav {
+  margin: 40px auto auto;
+  text-align: center;
+}
+
+img {
+  width:120px;
+  margin-left: 330px;
+  margin-right: -500px;
+}
