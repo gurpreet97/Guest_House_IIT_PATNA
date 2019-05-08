@@ -1,5 +1,5 @@
 <?php
-  $dbcc= mysqli_connect('localhost','root','','guesthouse');
+  $dbcc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
   if (!$dbcc) {
     die("Connection failed: " . mysqli_connect_error());
   }
