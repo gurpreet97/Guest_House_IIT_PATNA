@@ -3,7 +3,7 @@
 ###IMPORTANT###
   Change the name of the cloned repository to 'Guest_House_Online_Portal'.
 
-
+ 
 Setup Instructions:
 
 ## Steps to setup portal (On a local server):
