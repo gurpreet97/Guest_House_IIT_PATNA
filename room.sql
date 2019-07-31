@@ -1,24 +1,25 @@
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-A1','Master','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-A2','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-A3','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-B1','Master','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-B2','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-B3','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-C1','Master','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-C2','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-C3','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-D1','Master','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-D2','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('1-D3','Normal','1');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-A1','Master','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-A2','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-A3','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-B1','Master','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-B2','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-B3','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-C1','Master','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-C2','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-C3','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-D1','Master','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-D2','Normal','2');
-INSERT INTO `rooms`(`room`, `type`, `floor`) VALUES ('2-D3','Normal','2');
+INSERT INTO `rooms` (`room`, `type`, `floor`) VALUES
+('201-C', 'Normal', '2'),
+('201-A', 'Master', '2'),
+('201-B', 'Normal', '2'),
+('202-C', 'Normal', '2'),
+('202-A', 'Master', '2'),
+('202-B', 'Normal', '2'),
+('203-C', 'Normal', '2'),
+('203-A', 'Master', '2'),
+('203-B', 'Normal', '2'),
+('204-C', 'Normal', '2'),
+('204-A', 'Master', '2'),
+('204-B', 'Normal', '2'),
+('301-C', 'Normal', '3'),
+('301-A', 'Master', '3'),
+('301-B', 'Normal', '3'),
+('302-C', 'Normal', '3'),
+('302-A', 'Master', '3'),
+('302-B', 'Normal', '3'),
+('303-C', 'Normal', '3'),
+('303-A', 'Master', '3'),
+('303-B', 'Normal', '3'),
+('304-C', 'Normal', '3'),
+('304-A', 'Master', '3'),
+('304-B', 'Normal', '3');

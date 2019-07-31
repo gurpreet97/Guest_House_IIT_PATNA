@@ -28,11 +28,12 @@ if(mysqli_num_rows($data) != 0){
     {
       $row2[]=$row;
     }
-    for ($i=1; $i <=2; $i++) {
+
+    for ($i=1; $i <=20; $i++) {
       $j=0;
       ?>
     <li class="rows row--<?php echo $i ?>">
-      <ol class="rooms" type="A">
+      <ol class="rooms" type="C">
         <?php foreach ($row2 as $row1)
         {
 
@@ -91,10 +92,10 @@ if(mysqli_num_rows($data) != 0){
     <img src="images/legend/dblue.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
     <figcaption style="float:right; margin-left:5%;">Master </figcaption>
   </figure>
-  <figure style="display: flex; float:left; margin-right:3%;">
+  <!-- <figure style="display: flex; float:left; margin-right:3%;">
     <img src="images/legend/orange.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
     <figcaption style="float:right; margin-left:5%;">Requested</figcaption>
-  </figure>
+  </figure> -->
 </div>
 
 </div>
