@@ -12,7 +12,7 @@
   $query = "SELECT room,type,floor FROM rooms";
   $data = mysqli_query($dbcc, $query);
 
-if(mysqli_num_rows($data) != 0){
+  if(mysqli_num_rows($data) != 0){
  ?>
 
 <div class="building">
@@ -29,6 +29,7 @@ if(mysqli_num_rows($data) != 0){
       $row2[]=$row;
     }
 
+    // $i = i-th floor Number
     for ($i=1; $i <=20; $i++) {
       $j=0;
       ?>
