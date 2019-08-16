@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-            use PHPMailer\PHPMailer\PHPMailer;
-            use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $username = "";
 $email="";
@@ -92,8 +92,10 @@ if(isset($_POST['register']))
             // Load Composer's autoloader
             require 'phpmailer/vendor/autoload.php';
 
-            // Instantiation and passing `true` enables exceptions
-            $mail = new PHPMailer(true);
+          try
+          {
+              // Instantiation and passing `true` enables exceptions
+              $mail = new PHPMailer(true);
 
 
                 $mail->SMTPDebug = 1;                                       // Enable verbose debug output
@@ -124,17 +126,17 @@ if(isset($_POST['register']))
                  <br> You have succesfully been registered.<br> <br> Thank you";
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-
-
-            if ($mail->send()){
-                echo 'Email has been sent';
+                if ($mail->send()){
+                    echo 'Email has been sent';
+                }
+                else
+                    echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
-            else
-                echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
-
-
+          finally
+          {
             //Heading to HOMEPAGE
             header('location: homepage.php');
+          }
         }
       }
       else{

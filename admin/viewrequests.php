@@ -69,8 +69,10 @@ use PHPMailer\PHPMailer\Exception;
   // Load Composer's autoloader
   require '../phpmailer/vendor/autoload.php';
 
-  // Instantiation and passing `true` enables exceptions
-  $mail = new PHPMailer(true);
+  try
+    {
+      // Instantiation and passing `true` enables exceptions
+      $mail = new PHPMailer(true);
 
       //Server settings
       $mail->SMTPDebug = 0;                                       // Enable verbose debug output
@@ -103,7 +105,10 @@ use PHPMailer\PHPMailer\Exception;
       if($mail->send());
       else
           echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-
+    }
+    finally {
+      // finally block necessary
+    }
 
   }
 
