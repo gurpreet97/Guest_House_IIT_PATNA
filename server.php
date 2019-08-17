@@ -268,4 +268,4 @@ if(isset($_POST['adminlogin']))
     header('Location: ' . $home_url);
   }
 
-    ?>
+  ?>

@@ -24,6 +24,9 @@ use PHPMailer\PHPMailer\Exception;
 
     $update_status_query = "UPDATE bookings SET status='accepted' WHERE id='$id'";
     $update_status = mysqli_query($dbc, $update_status_query);
+    $_SESSION['id']=$id;
+    //Heading to chooseroom
+    header("location: ../chooseroom.php");
 
 
     if(!$update_status){
@@ -37,79 +40,7 @@ use PHPMailer\PHPMailer\Exception;
           '<span aria-hidden="true">&times;</span></button></div></div>';
     }
 
-    $query = "SELECT requestedrooms,guestname,username,indentorname,arrival,departure,email FROM bookings WHERE id='$id'";
-    $data1 = mysqli_query($dbc, $query);
-    $arr1=mysqli_fetch_array($data1);
-    $roomarr= explode(',', $arr1['requestedrooms']);
-    $username=$arr1['username'];
-    $guestname=$arr1['guestname'];
-    $indentorname=$arr1['indentorname'];
-    $arrival=$arr1['arrival'];
-    $departure=$arr1['departure'];
-    $email = $arr1['email'];
-
-    foreach ($roomarr as  $room) {
-
-    $query = "SELECT type,floor FROM rooms WHERE room='$room'";
-    $data2 = mysqli_query($dbc, $query);
-    $arr2=mysqli_fetch_array($data2);
-
-      $type=$arr2['type'];
-      $floor=$arr2['floor'];
-
-    $query = "INSERT INTO bookedrooms (room, type, floor, id, username, guestname, indentorname, arrival, departure) VALUES ('$room','$type', '$floor', '$id', '$username', '$guestname', '$indentorname', '$arrival', '$departure')";
-    $update_status=mysqli_query($dbc, $query);
-
-  }
-
     $activeTab = $_GET['tab'];
-
-  //acceptance mail
-
-  // Load Composer's autoloader
-  require '../phpmailer/vendor/autoload.php';
-
-  try
-    {
-      // Instantiation and passing `true` enables exceptions
-      $mail = new PHPMailer(true);
-
-      //Server settings
-      $mail->SMTPDebug = 0;                                       // Enable verbose debug output
-      $mail->isSMTP();                                            // Set mailer to use SMTP
-      $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-      $mail->Username   = 'theoriginalmk7@gmail.com';                     // SMTP username
-      $mail->Password   = 'uqmftsMfU9ustcw';                               // SMTP password
-      $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
-      $mail->Port       = 587;                                    // TCP port to connect to
-
-      //Recipients
-      $mail->setFrom('theoriginalmk7@gmail.com', 'Guesthouse IIT PATNA');
-      $mail->addAddress($email);     // Add a recipient
-      //$mail->addAddress('ellen@example.com');               // Name is optional
-      // $mail->addReplyTo('info@example.com', 'Information');
-      // $mail->addCC('cc@example.com');
-      // $mail->addBCC('bcc@example.com');
-
-      // // Attachments
-      // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-      // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-      // Content
-      $mail->isHTML(true);                                  // Set email format to HTML
-      $mail->Subject = 'Booking request accepted.';
-      $mail->Body    = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna. <br> Your request has beem accepted.<br> <br> Thank you";
-      //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-      if($mail->send());
-      else
-          echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-    finally {
-      // finally block necessary
-    }
-
   }
 
   //upon rejection
@@ -138,12 +69,13 @@ use PHPMailer\PHPMailer\Exception;
           '<span aria-hidden="true">&times;</span></button></div></div>';
     }
 
-//Delete the booking in bookedrooms
-    // try {
-    //   $update_status_query = "DELETE FROM bookedrooms WHERE id='$id'";
-    //   $update_status = mysqli_query($dbc, $update_status_query);
-    // } finally {
-    // }
+// Delete the booking in bookedrooms
+    try {
+      $update_status_query = "DELETE FROM bookedrooms WHERE id='$id'";
+      $update_status = mysqli_query($dbc, $update_status_query);
+    } finally {
+      //finally block is required.
+    }
 
     $activeTab = $_GET['tab'];
   }
@@ -200,7 +132,7 @@ use PHPMailer\PHPMailer\Exception;
             <th scope="col">Indentor Name</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
-            <th scope="col">Rooms Requested</th>
+            <th scope="col">Rooms Alloted</th>
             <th scope="col">Arrival</th>
             <th scope="col">Departure</th>
             <th scope="col">Change Status</th>
@@ -250,7 +182,8 @@ use PHPMailer\PHPMailer\Exception;
             <th scope="col">Indentor Name</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
-            <th scope="col">Rooms Requested</th>
+            <th scope="col">Number of Rooms</th>
+            <th scope="col">Preference</th>
             <th scope="col">Arrival</th>
             <th scope="col">Departure</th>
             <th scope="col" style="width:20%;">Change Status</th>
@@ -262,7 +195,7 @@ use PHPMailer\PHPMailer\Exception;
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-            $query = "SELECT id, indentorname, guestname, guestphone, requestedrooms,arrival, departure FROM bookings WHERE status='pending'";
+            $query = "SELECT id, indentorname, guestname, guestphone, number_rooms, accomodation ,arrival, departure FROM bookings WHERE status='pending'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -274,7 +207,8 @@ use PHPMailer\PHPMailer\Exception;
                         '<td>'. $row["indentorname"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
-                        '<td>' . $row["requestedrooms"] . '</td>' .
+                        '<td>' . $row["number_rooms"] . '</td>' .
+                        '<td>' . $row["accomodation"] . '</td>' .
                         '<td>' . $row["arrival"] . '</td>' .
                         '<td>' . $row["departure"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=2" method="post">' .
@@ -302,7 +236,8 @@ use PHPMailer\PHPMailer\Exception;
             <th scope="col">Indentor Name</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
-            <th scope="col">Rooms Requested</th>
+            <th scope="col">Number of Rooms</th>
+            <th scope="col">Preference</th>
             <th scope="col">Arrival</th>
             <th scope="col">Departure</th>
             <th scope="col">Change Status</th>
@@ -326,7 +261,8 @@ use PHPMailer\PHPMailer\Exception;
                               '<td>' . $row["indentorname"] . '</td>' .
                               '<td>' . $row["guestname"] . '</td>' .
                               '<td>' . $row["guestphone"] . '</td>' .
-                              '<td>' . $row["requestedrooms"] . '</td>' .
+                              '<td>' . $row["number_rooms"] . '</td>' .
+                              '<td>' . $row["accomodation"] . '</td>' .
                               '<td>' . $row["arrival"] . '</td>' .
                               '<td>' . $row["departure"] . '</td>' .
                               '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" >' .
