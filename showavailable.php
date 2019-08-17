@@ -1,9 +1,11 @@
 <?php
   require_once('server.php');
   require_once('templates/navbar.php');
-  if(empty($_SESSION['username'])) {
+
+  //This page is currently not in use, hence it wont be accesible.
+  // if(empty($_SESSION['username'])) {
   header('location: login.php');
-}
+// }
 ?>
 
 <!DOCTYPE html>
