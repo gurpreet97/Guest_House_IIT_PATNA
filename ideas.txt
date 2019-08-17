@@ -8,3 +8,14 @@ forgot password
 use mysqli_real_escape_string wherever 'get' is used
 //orange circle #E67E22
 file_put_contents("filename.txt", serialize($data));
+
+Use This
+$data["name"]=$_POST["name"]
+$data["email"]=$_POST["email"]
+$data["msg"]=$_POST["msg"]
+$data["origin"]=$_POST["origin"]
+
+file_put_contents("filename.txt", serialize($data));
+and to bring those values back from a file:
+
+$data = unserialize(file_get_contents("filename.txt"));
