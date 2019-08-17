@@ -43,6 +43,10 @@
       visibility: collapse;
     }
 
+    #selected{
+      visibility: collapse;
+    }
+
     .room label{
       /* background: darkseagreen; */
     }

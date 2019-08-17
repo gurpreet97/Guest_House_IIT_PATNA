@@ -34,6 +34,10 @@
     #roomsubmit{
       visibility: collapse;
     }
+    
+    #selected{
+      visibility: collapse;
+    }
 
     #check-form {
       width: 40%;

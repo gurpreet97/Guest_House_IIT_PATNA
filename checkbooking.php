@@ -28,14 +28,17 @@
 <body>
 <!--html code-->
 <br>
-      <table class="table" style="width:80%; margin-left:150px;">
+      <table class="table" style="width:80%; margin-left:130px;">
         <thead class="thead-light">
           <tr>
             <th scope="col">S.No.</th>
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
             <th scope="col">Status</th>
+            <th scope="col">Alloted Room</th>
             <th scope="col">Cancel Request</th>
           </tr>
         </thead>
@@ -58,9 +61,12 @@
                         '<td>' . $row["username"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
+                        '<td>' . $row["arrival"] . '</td>' .
+                        '<td>' . $row["departure"] . '</td>' .
                         '<td>' . $row["status"] . '</td>' .
+                        '<td>' . $row["requestedrooms"] . '</td>' .
                         '<td><form action="deletebooking.php?id=' . $row["id"] . '" method="post" style="border:none;">' .
-                        '<button type="delete" class="btn btn-outline-danger" name="delete" style="margin-top:-25px; margin-left:-75px;">Cancel</button></form></td>' .
+                        '<button type="delete" class="btn btn-outline-danger" name="delete" style="margin-top:-25px; margin-left:-45px;">Cancel</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
             }

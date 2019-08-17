@@ -77,7 +77,7 @@
       </form>
 
 <div class="align" style="display: flex; margin-left:25%;">
-  <figure style="display: flex; float:left; margin-right:3%;">
+  <figure id="selected" style="display: flex; float:left; margin-right:3%;">
     <img src="images/legend/green.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
     <figcaption style="float:right; margin-left:5%; display:inline-block;">Selected</figcaption>
   </figure>
