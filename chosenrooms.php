@@ -20,7 +20,7 @@ if (isset($_POST['roomschosen'])){
     if(!isset($s))
     $s=$selected;
     else {
-    $s=$s.",".$selected;
+    $s=$s.", ".$selected;
     }
   }
   $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -34,7 +34,7 @@ if (isset($_POST['roomschosen'])){
   $query = "SELECT requestedrooms,guestname,username,indentorname,arrival,departure,email FROM bookings WHERE id='$id'";
   $data1 = mysqli_query($dbc, $query);
   $arr1=mysqli_fetch_array($data1);
-  $roomarr= explode(',', $arr1['requestedrooms']);
+  $roomarr= explode(', ', $arr1['requestedrooms']);
   $username=$arr1['username'];
   $guestname=$arr1['guestname'];
   $indentorname=$arr1['indentorname'];

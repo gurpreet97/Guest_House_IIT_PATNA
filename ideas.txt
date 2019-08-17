@@ -7,3 +7,4 @@ table alternate columns different color
 forgot password
 use mysqli_real_escape_string wherever 'get' is used
 //orange circle #E67E22
+file_put_contents("filename.txt", serialize($data));

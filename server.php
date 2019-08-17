@@ -156,6 +156,11 @@ if(isset($_POST['register']))
 //logging in (from loginpage)
 if(isset($_POST['login']))
 {
+
+  //To be added upon deployment.
+  // $user     = $_POST["user_login"];
+  // $passwd   = $_POST["user_password"];
+
   $username = $_POST['username'];
   $password = $_POST['password'];
   //ensure fields are entered.

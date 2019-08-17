@@ -60,7 +60,6 @@ $room_nonveg_lunch=$_POST['nonveg_lunch'];
 $room_nonveg_dinner=$_POST['nonveg_dinner'];
 $s='N/A';
 
-
 $random_id = bin2hex(random_bytes(8));
 $_SESSION['id']=$random_id;
 
