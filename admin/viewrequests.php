@@ -249,7 +249,7 @@ use PHPMailer\PHPMailer\Exception;
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-          $query = "SELECT id, indentorname, guestname, guestphone,requestedrooms,arrival, departure FROM bookings WHERE status='rejected'";
+          $query = "SELECT id, indentorname, guestname, guestphone,number_rooms,accomodation,arrival, departure FROM bookings WHERE status='rejected'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>

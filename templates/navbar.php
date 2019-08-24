@@ -1,5 +1,5 @@
 <?php require_once('server.php'); ?>
-<img src="images/iitp_logo.png" class="rounded float-left">
+<!-- <img src="images/iitp_logo.png" class="rounded float-left"> -->
 <div class="header-nav">
   <h1>IIT PATNA</h1>
   <h2>Guest House Booking Portal</h2>

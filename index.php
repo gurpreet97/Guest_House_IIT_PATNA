@@ -18,7 +18,7 @@ $_SESSION['user_role']="guest";
 
 </head>
 <body>
-	<img src="images/iitp_logo.png" class="rounded float-left" height="120">
+	<!-- <img src="images/iitp_logo.png" class="rounded float-left" height="120"> -->
 	<div class="header-nav">
 	  <h1>IIT PATNA</h1>
 	  <h2>Guest House Booking Portal</h2>

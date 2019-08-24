@@ -10,9 +10,8 @@ use PHPMailer\PHPMailer\Exception;
 
 
 //declaring variables
-$username=$_SESSION['username'];
-$guest_name = "";
-$phone_number= "";
+$room['username']=$_SESSION['username'];
+
 
 if(empty($_SESSION['username'])) {
   header('location: login.php');
@@ -33,35 +32,35 @@ if (!$dbc) {
 
 
 
-$guest_name=$_POST['guest_name'];
-$phone_number=$_POST['phone_number'];
-$appartment_number=$_POST['appartment'];
-$city=$_POST['city'];
-$state=$_POST['state'];
-$pin=$_POST['pin'];
-$employee_id=$_POST['employee_id'];
-$indentorname=$_POST['indentorname'];
-$designation=$_POST['designation'];
-$department=$_POST['department'];
-$phone=$_POST['phone'];
-$email=$_POST['email'];
-$room_number_people=$_POST['number_people'];
-$room_payment=$_POST['payment'];
-$room_number_rooms=$_POST['number_rooms'];
-$room_accomodation=$_POST['accomodation'];
-$room_arrival=$_POST['arrival'];
-$room_departure=$_POST['departure'];
-$room_purpose=$_POST['purpose'];
-$room_veg_breakfast=$_POST['veg_breakfast'];
-$room_veg_lunch=$_POST['veg_lunch'];
-$room_veg_dinner=$_POST['veg_dinner'];
-$room_nonveg_breakfast=$_POST['nonveg_breakfast'];
-$room_nonveg_lunch=$_POST['nonveg_lunch'];
-$room_nonveg_dinner=$_POST['nonveg_dinner'];
-$s='N/A';
+$room['guest_name']=$_POST['guest_name'];
+$room['phone_number']=$_POST['phone_number'];
+$room['appartment_number']=$_POST['appartment'];
+$room['city']=$_POST['city'];
+$room['state']=$_POST['state'];
+$room['pin']=$_POST['pin'];
+$room['employee_id']=$_POST['employee_id'];
+$room['indentorname']=$_POST['indentorname'];
+$room['designation']=$_POST['designation'];
+$room['department']=$_POST['department'];
+$room['phone']=$_POST['phone'];
+$room['email']=$_POST['email'];
+$room['room_number_people']=$_POST['number_people'];
+$room['room_payment']=$_POST['payment'];
+$room['room_number_rooms']=$_POST['number_rooms'];
+$room['room_accomodation']=$_POST['accomodation'];
+$room['room_arrival']=$_POST['arrival'];
+$room['room_departure']=$_POST['departure'];
+$room['room_purpose']=$_POST['purpose'];
+$room['room_veg_breakfast']=$_POST['veg_breakfast'];
+$room['room_veg_lunch']=$_POST['veg_lunch'];
+$room['room_veg_dinner']=$_POST['veg_dinner'];
+$room['room_nonveg_breakfast']=$_POST['nonveg_breakfast'];
+$room['room_nonveg_lunch']=$_POST['nonveg_lunch'];
+$room['room_nonveg_dinner']=$_POST['nonveg_dinner'];
+$room['s']='N/A';
 
-$random_id = bin2hex(random_bytes(8));
-$_SESSION['id']=$random_id;
+$room['random_id'] = bin2hex(random_bytes(8));
+$_SESSION['id']=$room['random_id'];
 
 
 
@@ -85,16 +84,16 @@ $_SESSION['id']=$random_id;
 // $sql= "INSERT INTO roomrequirement (id,username,guestname,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner) VALUES ('$random_id','$username','$guest_name','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner')";
 // mysqli_query($dbc,$sql);
 
-$sql= "INSERT INTO bookings (id,username,guestname,guestphone,appartment,city,state,pin,employeeid,indentorname,designation,department,phone,email,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner,requestedrooms) VALUES ('$random_id','$username','$guest_name','$phone_number','$appartment_number','$city','$state','$pin','$employee_id','$indentorname','$designation','$department','$phone','$email','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner','$s')";
+$sql= "INSERT INTO bookings (id,username,guestname,guestphone,appartment,city,state,pin,employeeid,indentorname,designation,department,phone,email,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner,requestedrooms) VALUES ('$room[random_id]','$room[username]','$room[guest_name]','$room[phone_number]','$room[appartment_number]','$room[city]','$room[state]','$room[pin]','$room[employee_id]','$room[indentorname]','$room[designation]','$room[department]','$room[phone]','$room[email]','$room[room_number_people]','$room[room_payment]','$room[room_number_rooms]','$room[room_accomodation]','$room[room_arrival]','$room[room_departure]','$room[room_purpose]','$room[room_veg_breakfast]','$room[room_veg_lunch]','$room[room_veg_dinner]','$room[room_nonveg_breakfast]','$room[room_nonveg_lunch]','$room[room_nonveg_dinner]','$room[s]')";
 mysqli_query($dbc,$sql);
 
 //Mailing
 
 {
   // redirect to homepage
-  $_SESSION['username']=$username;
-  $_SESSION['email']=$email;
-  $_SESSION['id']=$random_id;
+  $_SESSION['username']=$room['username'];
+  $_SESSION['email']=$room['email'];
+  $_SESSION['id']=$room['random_id'];
   $_SESSION['success'] = "You are now logged in.";
 
 

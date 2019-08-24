@@ -48,7 +48,7 @@
   			--n;
   		if (n < 0)
   		{
-  			alert('Please select no more than ' + limit + ' checkboxes.')
+  			alert('Please select no more than ' + limit + ' rooms.')
   			return false;
   		}
   	}

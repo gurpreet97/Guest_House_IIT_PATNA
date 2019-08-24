@@ -18,7 +18,7 @@
 <div class="building">
   <div class="screen-side">
     <div class="screen"></div>
-    <h3 class="select-text">Please select your rooms.</h3>
+    <h3 class="select-text">Please select <b><?php echo $roomlimit ?></b> rooms.</h3>
   </div>
   <form class="form" id="room" action="chosenrooms.php" method="post" name="room">
   <ol class="cabin">
